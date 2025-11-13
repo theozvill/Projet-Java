@@ -1,13 +1,16 @@
 package equipe;
 
-import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Classe représentant un expert dans l'équipe.
  * Un expert hérite de {@link Personne} (classe mère) et peut proposer des projets en rapport avec ses spécialisations.
  */
 public class Expert extends Personne{
-    private ArrayList<Secteur> specialisations;
+    /**
+     * Les spécialisations de l'expert, déterminant les secteurs dans lesquels il peut proposer des projets.
+     */
+    private Set<Secteur> specialisations;
 
     /**
      * Constructeur de la classe Expert.
@@ -17,9 +20,18 @@ public class Expert extends Personne{
      * @param age l'âge de l'expert
      * @param specialisations les spécialisations de l'expert
      */
-    public Expert(String nom, String prenom, int age, ArrayList<Secteur> specialisations){
+    public Expert(String nom, String prenom, int age, Set<Secteur> specialisations){
         super(nom, prenom, age);
         this.specialisations = specialisations;
+    }
+
+    /**
+     * Obtient les spécialisations de l'expert.
+     * 
+     * @return les spécialisations de l'expert
+     */
+    public Set<Secteur> getSpecialisations(){
+        return this.specialisations;
     }
 
     /**
@@ -32,17 +44,22 @@ public class Expert extends Personne{
      * @throws IllegalArgumentException si le secteur du projet ne correspond pas à une des spécialisations de l'expert
      */
     public Projet proposerProjet(String titre, String description, Secteur secteur){
-        if(!(specialisations.contains(secteur)))
+        if(!(this.specialisations.contains(secteur)))
             throw new IllegalArgumentException("Le secteur du projet ne correspond pas à une des spécialisations de l'expert.");
 
         return new Projet(titre, description, secteur);
     }
 
-    public void addSpecialisation(Secteur secteur){ // RAJOUTER LES EXCEPTIONS POUR DOUBLES
+    /**
+     * Ajoute une spécialisation à l'expert.
+     * 
+     * @param secteur la spécialisation à ajouter
+     */    
+    public void addSpecialisation(Secteur secteur){
         this.specialisations.add(secteur);
     }
 
-    public void removeSpecialisation(Secteur secteur){ // RAJOUTER LES EXCEPTIONS SI INEXISTANT
+    public void removeSpecialisation(Secteur secteur){ // RAJOUTER LES EXCEPTIONS SI INEXISTANT ?
         this.specialisations.remove(secteur);
     }
     
