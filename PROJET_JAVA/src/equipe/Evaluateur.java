@@ -28,20 +28,10 @@ public class Evaluateur extends Personne{
 
     // Getter et Setter pour la spécialisation.
 
-    /**
-     * Obtient la spécialisation de l'évaluateur.
-     * 
-     * @return la spécialisation de l'évaluateur
-     */
     public Cout getSpecialisation(){
         return specialisation;
     }
 
-    /**
-     * Définit la spécialisation de l'évaluateur.
-     * 
-     * @param specialisation la nouvelle spécialisation de l'évaluateur
-     */
     public void setSpecialisation(Cout specialisation){
         this.specialisation = specialisation;
     }

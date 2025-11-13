@@ -36,6 +36,28 @@ public class Projet{
 
     // Getters pour tous les attributs.
 
+    public String getTitre(){
+        return titre;
+    }
+    public String getDescription(){
+        return description;
+    }
+    public Secteur getSecteur(){
+        return secteur;
+    }
+    public Integer getBenefice(){
+        return benefice;
+    }
+    public Integer getCoutEconomique(){
+        return coutEconomique;
+    }
+    public Integer getCoutSocial(){
+        return coutSocial;
+    }
+    public Integer getCoutEnvironnemental(){
+        return coutEnvironnemental;
+    }
+
 
     // Setters pour les attributs modifiables.  RAJOUTER LES EXCEPTIONS !!!!!!!
     public void setBenefice(int benefice){

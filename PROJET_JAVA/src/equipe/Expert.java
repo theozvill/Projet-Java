@@ -25,11 +25,7 @@ public class Expert extends Personne{
         this.specialisations = specialisations;
     }
 
-    /**
-     * Obtient les spécialisations de l'expert.
-     * 
-     * @return les spécialisations de l'expert
-     */
+
     public Set<Secteur> getSpecialisations(){
         return this.specialisations;
     }
