@@ -23,12 +23,29 @@ public abstract class Personne{
 
     // Getters pour tous les attributs.
 
+    /**
+     * retourne le nom de la personne.
+     * 
+     * @return le nom de la personne.
+     */
     public String getNom(){
         return nom;
     }
+
+    /**
+     * retourne le prénom de la personne.
+     * 
+     * @return le prénom de la personne.
+     */
     public String getPrenom(){
         return prenom;
     }
+
+    /**
+     * retourne l'âge de la personne.
+     * 
+     * @return l'âge de la personne.
+     */
     public int getAge(){
         return age;
     }

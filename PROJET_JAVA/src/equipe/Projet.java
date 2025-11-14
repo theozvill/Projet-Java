@@ -8,14 +8,8 @@ public class Projet{
     private String description;
     private final Secteur secteur;
     
-    /**
-     * Bénéfice éstimé par l'élu. Peut être null si non estimé.
-     */
     private Integer benefice;
     
-    /**
-     * Coûts évalués (peuvent être null si non évalués).
-     */
     private Integer coutEconomique;
     private Integer coutSocial;
     private Integer coutEnvironnemental;
@@ -36,24 +30,53 @@ public class Projet{
 
     // Getters pour tous les attributs.
 
+    /**
+     * retourne le titre du projet.
+     * @return le titre du projet.
+     */
     public String getTitre(){
         return titre;
     }
+    
+    /** retourne la description du projet.
+     * @return la description du projet.
+     */
     public String getDescription(){
         return description;
     }
+
+    /**
+     * retourne le secteur d'activité du projet.
+     * @return le secteur d'activité du projet.
+     */
     public Secteur getSecteur(){
         return secteur;
     }
+
+    /** retourne le bénéfice estimé du projet.
+     * @return le bénéfice estimé du projet.
+     */
     public Integer getBenefice(){
         return benefice;
     }
+
+    /** retourne le coût économique du projet.
+     * @return le coût économique du projet.
+     */
     public Integer getCoutEconomique(){
         return coutEconomique;
     }
+
+    /** retourne le coût social du projet.
+     * @return le coût social du projet.
+     */
     public Integer getCoutSocial(){
         return coutSocial;
     }
+
+    /** retourne le coût environnemental du projet.
+     * @return le coût environnemental du projet.
+     */
     public Integer getCoutEnvironnemental(){
         return coutEnvironnemental;
     }

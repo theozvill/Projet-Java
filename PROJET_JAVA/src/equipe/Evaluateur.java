@@ -7,10 +7,6 @@ package equipe;
  */
 
 public class Evaluateur extends Personne{
-    /**
-     * La spécialisation de l'évaluateur, détermine le type de coût qu'il évalue.
-     * Les valeurs possibles sont : ECONOMIQUE, SOCIAL, ENVIRONNEMENTAL.
-     */
     private Cout specialisation;
 
     /**
