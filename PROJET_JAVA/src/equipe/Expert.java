@@ -7,9 +7,6 @@ import java.util.Set;
  * Un expert hérite de {@link Personne} (classe mère) et peut proposer des projets en rapport avec ses spécialisations.
  */
 public class Expert extends Personne{
-    /**
-     * Les spécialisations de l'expert, déterminant les secteurs dans lesquels il peut proposer des projets.
-     */
     private Set<Secteur> specialisations;
 
     /**
