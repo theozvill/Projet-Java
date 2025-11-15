@@ -1,5 +1,6 @@
 package equipe;
 
+
 /**
  * Classe représentant un évaluateur dans l'équipe.
  * Un évaluateur hérite de {@link Personne} (classe mère) et possède une spécialisation
@@ -7,7 +8,8 @@ package equipe;
  */
 
 public class Evaluateur extends Personne{
-    private Cout specialisation;
+    private TypeCout specialisation;
+
 
     /**
      * Constructeur de la classe Evaluateur.
@@ -17,43 +19,46 @@ public class Evaluateur extends Personne{
      * @param age l'âge de l'évaluateur
      * @param specialisation la spécialisation de l'évaluateur (ECONOMIQUE, SOCIAL, ENVIRONNEMENTAL)
      */
-    public Evaluateur(String nom, String prenom, int age, Cout specialisation){
+    public Evaluateur(String nom, String prenom, int age, TypeCout specialisation){
         super(nom, prenom, age);
         this.specialisation = specialisation;
     }
 
     // Getter et Setter pour la spécialisation.
 
-    public Cout getSpecialisation(){
+    public TypeCout getSpecialisation(){
         return specialisation;
     }
 
-    public void setSpecialisation(Cout specialisation){
+    public void setSpecialisation(TypeCout specialisation){
         this.specialisation = specialisation;
     }
 
 
 
     /**
-     * Évalue un projet en fonction de la spécialisation de l'évaluateur.
+     * 
      * 
      * @param projet le projet à évaluer
-     * @param note la note attribuée au projet pour le type de coût correspondant
+     * @param cout le coût estimé du projet
      * @throws IllegalArgumentException si la spécialisation de l'évaluateur est inattendue ou nulle
      */
-    public void evaluerProjet(Projet projet, int note){
+    public void evaluerProjet(Projet projet, int cout){
         switch(this.specialisation){
             case ECONOMIQUE:
-                projet.setCoutEconomique(note);
+                projet.setCoutEconomique(cout);   // Cout du projet entre 10k et 200k
                 break;
             case SOCIAL:
-                projet.setCoutSocial(note);
+                projet.setCoutSocial(cout);
                 break;
             case ENVIRONNEMENTAL:
-                projet.setCoutEnvironnemental(note);
+                projet.setCoutEnvironnemental(cout);
                 break;
             default:
                 throw new IllegalArgumentException("Spécialisation inattendue ou nulle : " + this.specialisation);
         }
     }
+
+    
+
 }

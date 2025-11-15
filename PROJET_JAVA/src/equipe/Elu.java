@@ -17,7 +17,13 @@ public class Elu extends Personne{
         super(nom, prenom, age);
     }
 
-    public void evaluerProjet(Projet projet, int note){  // RAJOUTER LES EXCEPTIONS
-        projet.setBenefice(note);
+    /**
+     * Évalue un projet en estimant son bénéfice.
+     * 
+     * @param projet le projet à évaluer
+     * @param benefice le bénéfice estimé du projet
+     */
+    public void evaluerProjet(Projet projet, int benefice){
+        projet.setBenefice(benefice);
     }
 }
