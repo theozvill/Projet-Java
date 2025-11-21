@@ -26,10 +26,20 @@ public class Evaluateur extends Personne{
 
     // Getter et Setter pour la spécialisation.
 
+    /**
+     * retourne la spécialisation de l'évaluateur.
+     * 
+     * @return la spécialisation de l'évaluateur.
+     */
     public TypeCout getSpecialisation(){
         return specialisation;
     }
 
+    /**
+     * définit la spécialisation de l'évaluateur.
+     * 
+     * @param specialisation la nouvelle spécialisation de l'évaluateur.
+     */
     public void setSpecialisation(TypeCout specialisation){
         this.specialisation = specialisation;
     }
@@ -37,7 +47,7 @@ public class Evaluateur extends Personne{
 
 
     /**
-     * 
+     * Evalue un projet en estimant son coût en fonction de la spécialisation de l'évaluateur.
      * 
      * @param projet le projet à évaluer
      * @param cout le coût estimé du projet
@@ -46,7 +56,7 @@ public class Evaluateur extends Personne{
     public void evaluerProjet(Projet projet, int cout){
         switch(this.specialisation){
             case ECONOMIQUE:
-                projet.setCoutEconomique(cout);   // Cout du projet entre 10k et 200k
+                projet.setCoutEconomique(cout);
                 break;
             case SOCIAL:
                 projet.setCoutSocial(cout);
@@ -55,7 +65,7 @@ public class Evaluateur extends Personne{
                 projet.setCoutEnvironnemental(cout);
                 break;
             default:
-                throw new IllegalArgumentException("Spécialisation inattendue ou nulle : " + this.specialisation);
+                throw new IllegalArgumentException("Spécialisation null");
         }
     }
 

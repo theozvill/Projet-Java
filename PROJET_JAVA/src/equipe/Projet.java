@@ -4,9 +4,9 @@ package equipe;
  * Représente un projet pour la municipalité.
  */
 public class Projet{
-    private final String titre;
+    private String titre;
     private String description;
-    private final Secteur secteur;
+    private Secteur secteur;
     
     private Integer benefice;
     
@@ -83,6 +83,7 @@ public class Projet{
 
 
     // Setters pour les attributs modifiables.  RAJOUTER LES EXCEPTIONS !!!!!!!
+    
     public void setBenefice(int benefice){
         this.benefice = benefice;
     }

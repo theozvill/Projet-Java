@@ -1,7 +1,6 @@
 package equipe;
 
 import java.util.Set;
-import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,8 +10,6 @@ import java.util.ArrayList;
  */
 public class Expert extends Personne{
     private Set<Secteur> specialisations;
-
-    private Random random = new Random();
 
     /**
      * Constructeur de la classe Expert.
@@ -39,32 +36,13 @@ public class Expert extends Personne{
     /**
      * Propose un projet si le secteur du projet correspond à une des spécialisations de l'expert.
      * 
+     * @param titre le titre du projet
+     * @param description la description du projet
+     * @param secteur le secteur du projet
      * @return un projet proposé par l'expert
      */
-    public Projet proposerProjet(){
-        List<Secteur> specialisations = new ArrayList<>(this.specialisations);  // Convertir l'ensemble en liste pour un accès indexé
-        Secteur secteur = specialisations.get(random.nextInt(specialisations.size()));
-        String titre = genererTitre(secteur);
-        String description = "Description du projet dans le secteur " + secteur;
-
+    public Projet proposerProjet(String titre, String description, Secteur secteur){
         return new Projet(titre, description, secteur);
-    }
-
-    private String genererTitre(Secteur secteur){
-        switch(secteur){
-            case SPORT:
-                return "Construction d'un nouveau complexe sportif";
-            case SANTE:
-                return "Amélioration des infrastructures de santé locales";
-            case EDUCATION:
-                return "Mise à jour des équipements scolaires";
-            case CULTURE:
-                return "Organisation d'un festival culturel annuel";
-            case ATTRACTIVITE_ECONOMIQUE:
-                return "Création d'une zone d'activités économiques";
-            default:
-                return "Projet dans le secteur " + secteur;
-        }
     }
 
     /**

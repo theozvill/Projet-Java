@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Classe représentant une équipe municipale composée d'un élu, 3 évaluateurs et plusieurs experts.
+ */
 public class EquipeMunicipale{
     private Elu elu;
     private Map<TypeCout, Evaluateur> evaluateurs;
@@ -136,18 +139,23 @@ public class EquipeMunicipale{
 
     /**
      * Simule un cycle complet de proposition et d'évaluation de projets.
-     * Chaque expert propose un projet, chaque évaluateur évalue le projet selon sa spécialisation,
+     * Chaque expert propose un projet dans un secteur aléatoire à ses expertises. Chaque évaluateur évalue le projet selon sa spécialisation,
      * puis l'élu évalue le projet en estimant son bénéfice.
      * 
      * @return la liste des projets approuvés à la fin du cycle
      */
     public List<Projet> simulerCycle(){
-        ArrayList<Projet> projetsApprouves = new ArrayList<>();
+        List<Projet> projetsApprouves = new ArrayList<>();
         Projet p;
 
         // Chaque expert propose un projet
         for(Expert e : this.experts){
-            p = e.proposerProjet();
+
+            List<Secteur> spe = new ArrayList<>(e.getSpecialisations());    // On transforme le Set en List pour un acces indexé
+            Secteur secteur = spe.get(random.nextInt(spe.size()));
+            String titre = genererTitre(secteur);
+            String description = "Description du projet dans le secteur " + secteur;
+            p = e.proposerProjet(titre, description, secteur);
 
             // Chaque évaluateur donne un cout au projet
             for(Map.Entry<TypeCout,Evaluateur> entry : evaluateurs.entrySet()){
@@ -168,12 +176,27 @@ public class EquipeMunicipale{
         return projetsApprouves;
     }
 
-
+    private String genererTitre(Secteur secteur){
+        switch(secteur){
+            case SPORT:
+                return "Construction d'un nouveau complexe sportif";
+            case SANTE:
+                return "Amélioration des infrastructures de santé locales";
+            case EDUCATION:
+                return "Mise à jour des équipements scolaires";
+            case CULTURE:
+                return "Organisation d'un festival culturel annuel";
+            case ATTRACTIVITE_ECONOMIQUE:
+                return "Création d'une zone d'activités économiques";
+            default:
+                return "Projet dans le secteur " + secteur;
+        }
+    }
 
     private int genererCout(TypeCout tc){
         switch(tc){
             case ECONOMIQUE:
-                return 10000 + random.nextInt(150001);   // Cout du projet entre 10k et 200k
+                return 10000 + random.nextInt(190001);   // Cout du projet entre 10k et 200k
             case SOCIAL:
                 return random.nextInt(101);
             case ENVIRONNEMENTAL:

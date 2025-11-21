@@ -2,7 +2,7 @@ package equipe;
 
 /**
  * Classe représentant un élu dans l'équipe.
- * Un élu hérite de {@link Personne} (classe mère) et peut évaluer les projets en estimant leur bénéfice.
+ * Un élu hérite de {@link Personne} et peut évaluer les projets en estimant leur bénéfice.
  */
 public class Elu extends Personne{
     
