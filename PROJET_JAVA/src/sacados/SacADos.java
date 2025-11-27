@@ -25,7 +25,7 @@ public class SacADos{
        
         //Dim >= 3 
         if(dimension < 3){
-            throw new IllegalArgumentException("La dimension doit être >= 0 !\n");
+            throw new IllegalArgumentException("La dimension doit être >= 3 !\n");
         }
         
         //Coherence :  dimension avec meme taille que budget, meme nombre cout des objets avec dim
@@ -54,7 +54,7 @@ public class SacADos{
     }
 
     public List<Objet> getObjets(){
-        return objets;
+        return List.copyOf(objets);
     }
 
     //Les setters
@@ -95,7 +95,7 @@ public class SacADos{
     }
 
     //Methode d'affichage
-    public void afficherSacADos(){
+    /*public void afficherSacADos(){
         System.out.println("La dimention est : " + dimension);
 
         System.out.println("Les budgets sont");
@@ -108,11 +108,16 @@ public class SacADos{
             obj.afficherObjet();
         }
         System.out.println("");
+    }*/
+
+    @Override
+    public String toString(){
+        return "SacADos [dimension=" + dimension + ", budgets=" + java.util.Arrays.toString(budgets) + ", objets=" + objets + "]";
     }
 
     //Ajouter un objet
     public void addObjet(Objet objet){
-        if(objets == null){
+        if(objet == null){
             throw new IllegalArgumentException("Un objets ne peut pas être null\n");
         }
 

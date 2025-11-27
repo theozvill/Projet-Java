@@ -58,7 +58,7 @@ public class Objet{
     }
 
 
-    //Methode d'affichage
+    /*
     public void afficherObjet(){
         System.out.println("L'utilité est : " + utilite);
 
@@ -69,7 +69,11 @@ public class Objet{
 
         System.out.println("");
 
-    }
+    }*/
 
+    @Override
+    public String toString() {
+        return "Objet{" + "utilite=" + utilite + ", couts=" + couts.toString() +'}';
+    }
 
 }
