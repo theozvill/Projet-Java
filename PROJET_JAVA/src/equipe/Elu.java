@@ -26,4 +26,9 @@ public class Elu extends Personne{
     public void evaluerProjet(Projet projet, int benefice){
         projet.setBenefice(benefice);
     }
+
+    @Override
+    public String toString(){
+        return "Elu : " + super.toString();
+    }
 }

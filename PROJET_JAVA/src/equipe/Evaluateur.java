@@ -69,6 +69,10 @@ public class Evaluateur extends Personne{
         }
     }
 
+    @Override
+    public String toString(){
+        return "Evaluateur : " + super.toString() + " Specialisation=" + specialisation;
+    }
     
 
 }

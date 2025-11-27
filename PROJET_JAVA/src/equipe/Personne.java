@@ -49,4 +49,9 @@ public abstract class Personne{
     public int getAge(){
         return age;
     }
+
+    @Override
+    public String toString(){
+        return "nom=" + nom + ", prenom=" + prenom + ", age=" + age;
+    }
 }

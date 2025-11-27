@@ -1,6 +1,7 @@
 package equipe;
 
 import java.util.Set;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class Expert extends Personne{
      */
     public Expert(String nom, String prenom, int age, Set<Secteur> specialisations){
         super(nom, prenom, age);
-        this.specialisations = specialisations;
+        this.specialisations = new HashSet<>(specialisations);
     }
 
     /**
@@ -30,7 +31,7 @@ public class Expert extends Personne{
      * @return un ensemble des spécialisations
      */
     public Set<Secteur> getSpecialisations(){
-        return this.specialisations;
+        return Set.copyOf(this.specialisations);
     }
 
     /**
@@ -62,5 +63,9 @@ public class Expert extends Personne{
     public void removeSpecialisation(Secteur secteur){
         this.specialisations.remove(secteur);
     }
-    
+
+    @Override
+    public String toString(){
+        return "Expert: " + super.toString() + ", specialisations=" + specialisations;
+    }
 }

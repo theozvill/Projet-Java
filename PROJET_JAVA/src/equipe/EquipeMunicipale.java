@@ -2,6 +2,7 @@ package equipe;
 
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -38,8 +39,8 @@ public class EquipeMunicipale{
         }
 
         this.elu = elu;
-        this.evaluateurs = evaluateurs;
-        this.experts = experts;
+        this.evaluateurs = new java.util.HashMap<>(evaluateurs);
+        this.experts = new ArrayList<>(experts);
         this.projetsMunicipaux = new ArrayList<>();
     }
 
@@ -60,16 +61,26 @@ public class EquipeMunicipale{
      * @return la map des évaluateurs associés aux types de coûts.
      */
     public Map<TypeCout, Evaluateur> getEvaluateurs(){
-        return this.evaluateurs;
+        return Map.copyOf(this.evaluateurs);
     }
 
+    
     /**
      * retourne la liste des experts dans l'équipe municipale.
      * 
      * @return la liste des experts dans l'équipe municipale.
      */
     public List<Expert> getExperts(){
-        return this.experts;
+        return List.copyOf(this.experts);
+    }
+
+    /**
+     * retourne la liste des projets municipaux.
+     * 
+     * @return la liste des projets municipaux.
+     */
+    public List<Projet> getProjetsMunicipaux(){
+        return List.copyOf(this.projetsMunicipaux);
     }
 
     /* ----------------------------------- Setters --------------------------------- */
@@ -97,7 +108,7 @@ public class EquipeMunicipale{
         if(evaluateurs.size() != 3){
             throw new IllegalArgumentException("Il doit y avoir exactement 3 évaluateurs, un pour chaque type de coût.");
         }
-        this.evaluateurs = evaluateurs;
+        this.evaluateurs = new HashMap<>(evaluateurs);
     }
 
     /**
@@ -110,7 +121,7 @@ public class EquipeMunicipale{
         if(experts == null || experts.isEmpty()){
             throw new IllegalArgumentException("L'équipe doit contenir au moins un expert.");
         }
-        this.experts = experts;
+        this.experts = new ArrayList<>(experts);
     }
 
     /* ----------------------------------- Méthodes --------------------------------- */
@@ -208,6 +219,22 @@ public class EquipeMunicipale{
 
     private int genererBenefice(){
         return 5000 + random.nextInt(15001);   // Bénéfice entre 5k et 20k
+    }
+
+    @Override
+    public String toString() {
+        return """
+                ┌────────── Équipe Municipale ──────────
+                │ Élu : %s %s
+                │ Nombre d'évaluateurs : %d
+                │ Nombre d'experts : %d
+                └────────────────────────────────────────
+                """.formatted(
+                    elu.getNom(),
+                    elu.getPrenom(),
+                    evaluateurs.size(),
+                    experts.size()
+                );
     }
 
 }

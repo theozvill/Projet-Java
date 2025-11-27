@@ -15,11 +15,16 @@ public class SacADos{
         this.objets = new ArrayList<>();
     }
 
+    //Constructeurs avec dimension et budgets
+    public SacADos(int dimension, int[] budgets){
+        this(dimension, budgets, new ArrayList<>());
+    }
+
     //Constructeurs complet
     public SacADos(int dimension, int[] budgets, List<Objet> objets){
         
         //Securité : aucune valeur null
-        if(budgets == null){
+        if(budgets == null || objets == null){
             throw new IllegalArgumentException("Aucune valeur ne doit être null !\n");
         }
        
@@ -32,6 +37,7 @@ public class SacADos{
         if(dimension != budgets.length){
             throw new IllegalArgumentException("On doit avoir longueur budget = dimension\n");
         }
+        
         for (Objet obj : objets){
             if (dimension != obj.getCouts().length || obj.getCouts() == null){
                 throw new IllegalArgumentException("On doit avoir longueur cout = dimension\n");
@@ -94,27 +100,6 @@ public class SacADos{
         this.objets = new ArrayList<>(objets);
     }
 
-    //Methode d'affichage
-    /*public void afficherSacADos(){
-        System.out.println("La dimention est : " + dimension);
-
-        System.out.println("Les budgets sont");
-        for (int val : budgets){
-            System.out.println(val + " ");
-        }
-
-        System.out.print("Les objets sont");
-        for (Objet obj : objets){
-            obj.afficherObjet();
-        }
-        System.out.println("");
-    }*/
-
-    @Override
-    public String toString(){
-        return "SacADos [dimension=" + dimension + ", budgets=" + java.util.Arrays.toString(budgets) + ", objets=" + objets + "]";
-    }
-
     //Ajouter un objet
     public void addObjet(Objet objet){
         if(objet == null){
@@ -127,6 +112,45 @@ public class SacADos{
         }
 
         this.objets.add(objet);
+    }
+
+    //Methode pour vérifier si les contraintes sont respectées
+    public boolean respecteContraintes(){
+        int[] sommes = new int[this.dimension];
+
+        for (Objet o : this.objets){
+            int[] c = o.getCouts();
+
+            for(int i = 0; i < this.dimension; i++){
+                sommes[i] += c[i];
+                if (sommes[i] > this.budgets[i]) return false;
+            }
+        }
+        return true;
+    }
+
+    //Methode pour calculer l'utilité totale
+    public int utiliteTotale(){
+        int tot = 0;
+        for (Objet o : this.objets) tot += o.getUtilite();
+        return tot;
+    }
+
+    @Override
+    public String toString() {
+        return """
+                ┌────────── Sac à Dos ──────────
+                │ Dimension : %d
+                │ Budgets : %s
+                │ Utilité totale : %d
+                │ Nombre d'objets : %d
+                └────────────────────────────────
+                """.formatted(
+                    dimension,
+                    java.util.Arrays.toString(budgets),
+                    utiliteTotale(),
+                    objets.size()
+                );
     }
 
 }

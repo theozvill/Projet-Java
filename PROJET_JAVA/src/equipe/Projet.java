@@ -99,4 +99,18 @@ public class Projet{
     public void setCoutEnvironnemental(int coutEnvironnemental){
         this.coutEnvironnemental = coutEnvironnemental;
     }
+
+    @Override
+    public String toString() {
+        return  "Projet\n" +
+                "   Titre = '" + titre + "',\n" +
+                "   Description = '" + description + "',\n" +
+                "   Secteur = " + secteur + ",\n" +
+                "   Bénéfice = " + benefice + ",\n" +
+                "   Coûts = [Eco=" + coutEconomique +
+                ", Social=" + coutSocial +
+                ", Env=" + coutEnvironnemental + "]\n";
+    }
+
+    
 }

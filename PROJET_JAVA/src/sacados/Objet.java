@@ -57,25 +57,9 @@ public class Objet{
         }
     }
 
-
-    /*
-    public void afficherObjet(){
-        System.out.println("L'utilité est : " + utilite);
-
-        System.out.println("Les couts sont :");
-        for (int val : couts){
-            System.out.print(val + " ");
-        }
-
-        System.out.println("");
-
-    }*/
-
     @Override
     public String toString() {
         return "Objet{" + "utilite=" + utilite + ", couts=" + java.util.Arrays.toString(couts) +'}';
     }
 
 }
-
-
