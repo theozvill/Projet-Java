@@ -73,8 +73,9 @@ public class Objet{
 
     @Override
     public String toString() {
-        return "Objet{" + "utilite=" + utilite + ", couts=" + Arrays.toString(couts) +'}';
+        return "Objet{" + "utilite=" + utilite + ", couts=" + java.util.Arrays.toString(couts) +'}';
     }
 
 }
+
 
