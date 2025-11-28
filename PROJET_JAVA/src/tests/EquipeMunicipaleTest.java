@@ -47,7 +47,7 @@ class EquipeMunicipaleTest {
             // Le bénéfice doit être renseigné
             assertNotNull(p.getBenefice(), "Bénéfice manquant");
 
-            // Vérification sur les ranges aléatoires (optionnel mais utile)
+            // Vérification sur les ranges aléatoires
             assertTrue(p.getBenefice() >= 5000 && p.getBenefice() <= 20000, "Bénéfice hors des bornes");
         }
     }

@@ -1,5 +1,6 @@
 import equipe.*;
 import sacados.*;
+import solveur.glouton.*;
 
 import java.util.*;
 
@@ -21,7 +22,10 @@ public class Main {
         // 3. Création des experts
         List<Expert> experts = List.of(
                 new Expert("Theo", "RAIME", 25, Set.of(Secteur.SPORT, Secteur.EDUCATION)),
-                new Expert("Theo", "LOGIE", 25, Set.of(Secteur.SANTE, Secteur.CULTURE))
+                new Expert("Theo", "LOGIE", 25, Set.of(Secteur.SANTE, Secteur.CULTURE)),
+                new Expert("Theo", "RIBLE", 25, Set.of(Secteur.ATTRACTIVITE_ECONOMIQUE, Secteur.SPORT)),
+                new Expert("Theo", "LAIT", 25, Set.of(Secteur.ATTRACTIVITE_ECONOMIQUE, Secteur.EDUCATION)),
+                new Expert("Theo", "XIDENTAL", 25, Set.of(Secteur.SANTE, Secteur.CULTURE))
         );
 
         // 4. Création de l'équipe
@@ -61,7 +65,47 @@ public class Main {
 
         System.out.println(sac);
         System.out.println("Contrainte respectée ? " + sac.respecteContraintes());
-        
-        System.out.println("\n=== Fin du test ===");
+
+        /* ----------------------------------- Glouton Ajout --------------------------------- */
+
+        System.out.println("\n=== Test Glouton : Méthode par Ajout ===");
+
+        GloutonAjoutSolver gloutonAjout = new GloutonAjoutSolver();
+        Comparator<Objet> comparatorSomme = new ComparatorSomme();
+
+        List<Objet> solutionAjout = gloutonAjout.resoudre(sac, comparatorSomme);
+
+        SacADos sacTestAjout = new SacADos(dimension, budgets, solutionAjout);
+        System.out.println(sacTestAjout);
+
+        System.out.println("Objets choisis (Ajout) :");
+        for(Objet o : solutionAjout){
+            System.out.println(o);
+        }
+        System.out.println("Contrainte respectée ? " + sacTestAjout.respecteContraintes());
+
+
+
+        /* ----------------------------------- Glouton Retrait --------------------------------- */
+
+        System.out.println("\n=== Test Glouton : Méthode par Retrait ===");
+
+        GloutonRetraitSolver gloutonRetrait = new GloutonRetraitSolver();
+
+        List<Objet> solutionRetrait = gloutonRetrait.resoudre(sac, comparatorSomme);
+
+        SacADos sacTestRetrait = new SacADos(dimension, budgets, solutionRetrait);
+        System.out.println(sacTestRetrait);
+
+        System.out.println("Objets choisis (Retrait) :");
+        for(Objet o : solutionRetrait){
+            System.out.println(o);
+        }
+        System.out.println("Contrainte respectée ? " + sacTestRetrait.respecteContraintes());
+
+
+        /* ---------------------------------------------------------------------- */
+
+        System.out.println("\n=== Fin des tests ===");
     }
 }
