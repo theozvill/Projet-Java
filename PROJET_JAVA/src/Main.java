@@ -68,21 +68,36 @@ public class Main {
 
         /* ----------------------------------- Glouton Ajout --------------------------------- */
 
-        System.out.println("\n=== Test Glouton : Méthode par Ajout ===");
+        System.out.println("\n=== Test Glouton : Méthode par Ajout ComparatorSomme ===");
 
         GloutonAjoutSolver gloutonAjout = new GloutonAjoutSolver();
         Comparator<Objet> comparatorSomme = new ComparatorSomme();
+        Comparator<Objet> comparatorMax = new ComparatorMax();
 
-        List<Objet> solutionAjout = gloutonAjout.resoudre(sac, comparatorSomme);
+        List<Objet> solutionAjoutSomme = gloutonAjout.resoudre(sac, comparatorSomme);
+        List<Objet> solutionAjoutMax = gloutonAjout.resoudre(sac, comparatorMax);
 
-        SacADos sacTestAjout = new SacADos(dimension, budgets, solutionAjout);
-        System.out.println(sacTestAjout);
 
-        System.out.println("Objets choisis (Ajout) :");
-        for(Objet o : solutionAjout){
+        SacADos sacTestAjoutSomme = new SacADos(dimension, budgets, solutionAjoutSomme);
+        System.out.println(sacTestAjoutSomme);
+
+        System.out.println("Objets choisis (Ajout - Somme) :");
+        for(Objet o : solutionAjoutSomme){
             System.out.println(o);
         }
-        System.out.println("Contrainte respectée ? " + sacTestAjout.respecteContraintes());
+        System.out.println("Contrainte respectée ? " + sacTestAjoutSomme.respecteContraintes());
+
+
+        System.out.println("\n=== Test Glouton : Méthode par Ajout ComparatorMax ===");
+
+        SacADos sacTestAjoutMax = new SacADos(dimension, budgets, solutionAjoutMax);
+        System.out.println(sacTestAjoutMax);
+
+        System.out.println("Objets choisis (Ajout - Max) :");
+        for(Objet o : solutionAjoutMax){
+            System.out.println(o);
+        }
+        System.out.println("Contrainte respectée ? " + sacTestAjoutMax.respecteContraintes());
 
 
 
