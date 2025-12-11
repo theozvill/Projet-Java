@@ -44,7 +44,7 @@ public class SacADos{
         if(budgets == null || objets == null){
             throw new IllegalArgumentException("Aucune valeur ne doit être null !\n");
         }
-       
+        
         //Dim >= 3 
         if(dimension < 3){
             throw new IllegalArgumentException("La dimension doit être >= 3 !\n");
