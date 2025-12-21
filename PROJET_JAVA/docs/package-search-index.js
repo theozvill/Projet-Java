@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"equipe"},{"l":"main"},{"l":"sacados"},{"l":"solveur.glouton"},{"l":"solveur.hillclimbing"},{"l":"utilitaires"}];updateSearchResults();
